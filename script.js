@@ -1,5 +1,9 @@
 var input = document.querySelector('.input_text');
 var button = document.querySelector('.submit');
+// var latitude;
+// console.log("here")
+// console.log(latitude)
+// var longitude;
 
 var today = moment();
 $("#currentDay").text(today.format("MMMM Do, YYYY"));
@@ -9,10 +13,12 @@ $("#currentDay").text(today.format("MMMM Do, YYYY"));
 
 button.addEventListener('click', function(event) {
   event.preventDefault();
-  getCity();
+  getCurrentWeather();
+  getWeatherForecast();
 })
 
-var getCity = function () {
+// API call for current weather
+var getCurrentWeather = function () {
     var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + input.value + ',us&APPID=bd82b02fbda745ecf29d9df8a99a2118'
     // var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=Sacramento,us&APPID=bd82b02fbda745ecf29d9df8a99a2118';
   
@@ -20,68 +26,58 @@ var getCity = function () {
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
-            // displayRepos(data, city);
-            console.log(data.main.temp);
+            // console.log(data.main.temp);
 
             var currentCity = data.name;
             document.getElementById('currentCity').textContent = currentCity;
-            console.log(data.name);
+            // console.log(data.name);
 
             var currentIcon = data.weather[0].icon;
             document.getElementById('currentIcon').textContent = currentIcon;
-            console.log(data.weather[0].icon);
+            // console.log(data.weather[0].icon);
 
             var currentTemp =  Math.floor(((data.main.temp-273.15) * (9/5)) + 32);
             document.getElementById('currentTemp').textContent = "Temperature: " + currentTemp + "°F";
-            console.log(currentTemp);
+            // console.log(currentTemp);
 
             var currentHumidity = data.main.humidity;
             document.getElementById('currentHumidity').textContent = "Humidity: " + currentHumidity + "%";
-            console.log(data.main.humidity);
+            // console.log(data.main.humidity);
 
             var currentWind = data.wind.speed;
             document.getElementById('currentWind').textContent = "Wind Speed: " + currentWind + "MPH";
-            console.log(data.wind.speed);
+            // console.log(data.wind.speed);
 
-
-
-            console.log(data)
+            // console.log("data is here");
+            latitude = data.coord.lat;
+            // console.log(latitude);
+            longitude = data.coord.lon;
+            // console.log(longitude);
           });
         }
       })
   };
 
 
-
-  
-  
-
-
-
-
-console.log('----------------------------------------------------------------------------------------------------')
-
-
-
-  var getOneCall = function () {
-
-    var requestURL = "https://api.openweathermap.org/data/2.5/onecall?lat=38.4666&lon=-121.3177&appid=bd82b02fbda745ecf29d9df8a99a2118";
+// API call for Weather Forecast
+  var getWeatherForecast = function () {
+    var requestURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&appid=bd82b02fbda745ecf29d9df8a99a2118";
+    // var requestURL = "https://api.openweathermap.org/data/2.5/onecall?lat=38.4666&lon=-121.3177&appid=bd82b02fbda745ecf29d9df8a99a2118";
   
     fetch(requestURL)
       .then(function (response) {
-        console.log(response)
+        // console.log(response)
         if (response.ok) {
           response.json()
       .then(function (data) {
-            // displayRepos(data, city);
 
             // Gets UV
             var currentUV = data.current.uvi;
             document.getElementById('currentUV').textContent = "UV Index: " + currentUV;
-            console.log(data.current.uvi);
+            // console.log(data.current.uvi);
 
             // Adds a color to UV depending how much light is outside
-            if (currentUV >= 8) {
+            if (currentUV >= 7) {
               document.getElementById('currentUV').style.backgroundColor = "red"
             } else if (currentUV >= 3) {
               document.getElementById('currentUV').style.backgroundColor = "orange"
@@ -94,7 +90,7 @@ console.log('-------------------------------------------------------------------
            ////////////////////////////// Day 1 for 5 day forecast//////////////////////////////
             let dayOneDate = moment();
             $("#dayOneDate").text(dayOneDate.format("MMMM Do, YYYY"));
-            console.log(dayOneDate)
+            // console.log(dayOneDate)
 
             var dayOneTemp =  Math.floor(((data.daily[0].temp.day-273.15) * (9/5)) + 32);
             document.getElementById('dayOneTemp').textContent = "Temperature: " + dayOneTemp + "°F";
@@ -103,7 +99,6 @@ console.log('-------------------------------------------------------------------
             var dayOneHumidity = data.daily[0].humidity;
             document.getElementById('dayOneHumidity').textContent = "Humidity: " + dayOneHumidity + "%";
             // console.log(dayOneHumidity);
-
 
            ////////////////////////////// Day 2 for 5 day forecast//////////////////////////////
             let dayTwoDate = moment().add(1,'days');
@@ -153,17 +148,20 @@ console.log('-------------------------------------------------------------------
             document.getElementById('dayFiveHumidity').textContent = "Humidity: " + dayFiveHumidity + "%";
             // console.log(data.daily[0].humidity);
 
-
-            console.log(data)
+            // console.log("second data is here");
+            // console.log(data)
+            getCurrentWeather();
           });
         }
       })
   };
 
-  getOneCall();
 
 
 
+  // let locationIcon = document.querySelector('.weather-icon');
+  // const {icon} = data.weather[0];
+  // locationIcon.innerHTML = <img src="icons/${icon}.png"></img>
 
 
 
