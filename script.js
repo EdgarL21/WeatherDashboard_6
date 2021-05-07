@@ -1,4 +1,5 @@
-var questions = 'how do I get the icon?'
+var input = document.querySelector('.input_text');
+var button = document.querySelector('.submit');
 
 var today = moment();
 $("#currentDay").text(today.format("MMMM Do, YYYY"));
@@ -6,10 +7,14 @@ $("#currentDay").text(today.format("MMMM Do, YYYY"));
 
 
 
+button.addEventListener('click', function(event) {
+  event.preventDefault();
+  getCity();
+})
 
 var getCity = function () {
-    // var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + ',us&APPID=bd82b02fbda745ecf29d9df8a99a2118'
-    var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=Sacramento,us&APPID=bd82b02fbda745ecf29d9df8a99a2118';
+    var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + input.value + ',us&APPID=bd82b02fbda745ecf29d9df8a99a2118'
+    // var requestURL = 'https://api.openweathermap.org/data/2.5/weather?q=Sacramento,us&APPID=bd82b02fbda745ecf29d9df8a99a2118';
   
     fetch(requestURL)
       .then(function (response) {
@@ -46,7 +51,7 @@ var getCity = function () {
       })
   };
 
-  getCity();
+
 
   
   
@@ -149,7 +154,7 @@ console.log('-------------------------------------------------------------------
             // console.log(data.daily[0].humidity);
 
 
-            // console.log(data.daily[0])
+            console.log(data)
           });
         }
       })

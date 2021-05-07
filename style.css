@@ -2,7 +2,10 @@ body {
     background-color: grey;
 }
 
-.button {
+#h {
+    height: cover;
+}
+#submit {
     background-color: #3895D3;
 }
 .top-container {

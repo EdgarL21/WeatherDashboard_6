@@ -13,9 +13,10 @@
         <h1>Weather Dashboard</h1>
     </header>
 
+
     <form>
-        <input type="search" placeholder="City">
-        <input id="search" class="button" type="button" value="🔍">
+        <input type="text" placeholder="Enter the city" class="input_text">
+        <input id="submit" class="submit" type="submit" value="🔍">
         <input id="clear" class="button" type="button" value="Clear History">
     </form>
 
@@ -32,6 +33,7 @@
     <div class="bottom-container"> 5-Day Forecast
         <div class="div-container">
             <div id="dayOneDate"></div>
+            <div id="currentIcon"></div>
             <div id="dayOneTemp"></div>
             <div id="dayOneHumidity"></div>
         </div>
