@@ -1,0 +1,25 @@
+body {
+    background-color: grey;
+}
+
+.button {
+    background-color: #3895D3;
+}
+.top-container {
+    border: 1px solid black;
+}
+
+.bottom-container {
+    display: flex;
+    color: white;
+}
+
+.div-container {
+    background-color: #3895D3;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+#currentUV {
+    display: inline-block;
+}

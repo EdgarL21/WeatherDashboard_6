@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <form>
+        <input type="search" placeholder="City">
+        <input id="search" class="button" type="button" value="🔍">
+        <input id="clear" class="button" type="button" value="Clear History">
+    </form>
+
+    <div class="top-container">
+        <div id="currentCity"></div>
+        <p id="currentDay"></p>
+        <div id="currentIcon"></div>
+        <div id="currentTemp"></div>
+        <div id="currentHumidity"></div>
+        <div id="currentWind"></div>
+        <div id="currentUV"></div>
+    </div>
+
+    <div class="bottom-container"> 5-Day Forecast
+        <div class="div-container">
+            <div id="dayOneDate"></div>
+            <div id="dayOneTemp"></div>
+            <div id="dayOneHumidity"></div>
+        </div>
+
+        <div class="div-container">
+            <div id="dayTwoDate"></div>
+            <div id="dayTwoTemp"></div>
+            <div id="dayTwoHumidity"></div>
+        </div>
+
+        <div class="div-container">
+            <div id="dayThreeDate"></div>
+            <div id="dayThreeTemp"></div>
+            <div id="dayThreeHumidity"></div>
+        </div>
+
+        <div class="div-container">
+            <div id="dayFourDate"></div>
+            <div id="dayFourTemp"></div>
+            <div id="dayFourHumidity"></div>
+        </div>
+
+        <div class="div-container">
+            <div id="dayFiveDate"></div>
+            <div id="dayFiveTemp"></div>
+            <div id="dayFiveHumidity"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
