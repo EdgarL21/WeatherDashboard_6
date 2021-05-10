@@ -2,25 +2,28 @@ body {
     background-color: grey;
 }
 
-/* #h {
-    height: cover;
-} */
-#submit {
+.submit {
     background-color: #3895D3;
 }
 .top-container {
     border: 1px solid black;
+    margin: 1em;
+    display: none;
 }
 
 .bottom-container {
-    display: flex;
+    display: none;
     color: white;
+    /* flex-direction: row; */
 }
 
 .div-container {
     background-color: #3895D3;
-    padding: 1rem;
-    margin: 1rem;
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 40%;
+    padding: 1em;
+    margin: 1em;
 }
 
 #currentUV {
