@@ -1,14 +1,16 @@
 var input = document.querySelector(".input_text");
 var button = document.querySelector(".submit");
 var today = moment();
+var latitude;
+var longitude;
 
 button.addEventListener("click", function (event) {
   event.preventDefault();
   $("#currentDay").text(today.format("MMMM Do, YYYY"));
   getCurrentWeather();
-  getWeatherForecast();
-  displayCurrent();
-  displayForecast();
+  // getWeatherForecast();
+  // displayCurrent();
+  // displayForecast();
 
   //Saving to local Storage
   // for (var i = 0; i < input.value.length; i++) {
@@ -46,8 +48,17 @@ var getCurrentWeather = function () {
         // console.log(data.name);
 
         var currentIcon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-        document.getElementById("currentIcon").textContent = currentIcon;
+        // document.getElementById("currentIcon").textContent = currentIcon;
+        document.getElementById("currentIcon").src = currentIcon;
         // console.log(data.weather[0].icon);
+
+        var img = document.createElement('img');
+        console.log(img);
+        console.log('1')
+        img.src = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+        console.log(img);
+        console.log('2')
+        document.getElementById('test').appendChild(img);
 
         var currentTemp = Math.floor((data.main.temp - 273.15) * (9 / 5) + 32);
         document.getElementById("currentTemp").textContent =
@@ -65,13 +76,18 @@ var getCurrentWeather = function () {
         // console.log(data.wind.speed);
 
         // console.log("data is here");
+        // var latitude;
         latitude = data.coord.lat;
         // console.log(latitude);
+        // var longitude;
         longitude = data.coord.lon;
         // console.log(longitude);
       });
     }
   });
+  getWeatherForecast();
+  displayCurrent();
+  displayForecast();
 };
 
 // API call for Weather Forecast
@@ -186,10 +202,13 @@ var getWeatherForecast = function () {
 
         // console.log("second data is here");
         // console.log(data)
-        getCurrentWeather();
+        // getCurrentWeather();
       });
     }
   });
+  // getCurrentWeather();
+    // displayCurrent();
+  // displayForecast();
 };
 
 function displayCurrent() {
