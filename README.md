@@ -5,5 +5,4 @@ Description: This application is designed to pull the current weather data and a
 You'll have to press the search button a couple of times to get output. I think this is happeneing because I'm calling the fucntions within eachother to get data from one function to another
 
 Link
-https://edgarl21.github.io/WeatherDashboard_EL/
 https://edgarl21.github.io/WeatherDashboard_6/
