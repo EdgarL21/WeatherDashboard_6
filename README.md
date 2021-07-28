@@ -6,3 +6,4 @@ You'll have to press the search button a couple of times to get output. I think 
 
 Link
 https://edgarl21.github.io/WeatherDashboard_EL/
+https://edgarl21.github.io/WeatherDashboard_6/
